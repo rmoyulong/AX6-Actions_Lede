@@ -137,7 +137,7 @@ jobs:
         run: |
           #cp -rf $GITHUB_WORKSPACE/ax6/generic.mk openwrt/target/linux/ipq807x/image/generic.mk
           
-          if [ OWRT_URL == *"lede"* ]; then
+          if [ $OWRT_URL == *"lede"* ]; then
             cp -rf $GITHUB_WORKSPACE/ax6/generic.mk openwrt/target/linux/ipq807x/image/generic.mk
             echo '已修复AX6驱动!'
           else
