@@ -35,5 +35,5 @@ jobs:
       OWRT_CFG: redmi_ax6-6.1.config
       #设备类型
       OWRT_TYPE: 红米AX6
-      OWRT_LINUX: 6.1.x
+      OWRT_LINUX: 6.1.x-old
       
