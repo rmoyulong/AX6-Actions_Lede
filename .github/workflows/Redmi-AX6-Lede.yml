@@ -32,8 +32,8 @@ jobs:
       #源码版本
       OWRT_BRANCH: master
       #自定义config
-      OWRT_CFG: redmi_ax6-5.15.config
+      OWRT_CFG: lede.5.15.config
       #设备类型
       OWRT_TYPE: 红米AX6
-      OWRT_LINUX: 5.15.x-old
+      OWRT_LINUX: 5.15.x
       
