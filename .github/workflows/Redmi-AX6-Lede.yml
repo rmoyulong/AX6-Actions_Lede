@@ -28,11 +28,11 @@ jobs:
       #默认地址
       OWRT_IP: 192.168.31.1
       #默认源码
-      OWRT_URL: https://github.com/Cathgao/openwrt
+      OWRT_URL: https://github.com/coolsnowwolf/lede
       #源码版本
       OWRT_BRANCH: master
       #自定义config
-      OWRT_CFG: redmi_ax6-5.15.config
+      OWRT_CFG: lede.5.15.config
       #设备类型
       OWRT_TYPE: 红米AX6
       OWRT_LINUX: 5.15.x
