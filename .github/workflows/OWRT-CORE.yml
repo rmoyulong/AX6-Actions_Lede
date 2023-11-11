@@ -118,8 +118,9 @@ jobs:
         working-directory: /workdirmo
         run: |
           df -hT $PWD
-          #git clone --depth 1 $OWRT_URL -b $REPO_BRANCH openwrt
-          git clone $OWRT_URL openwrt
+          #git clone $OWRT_URL -b $OWRT_BRANCH --single-branch openwrt
+          git clone $OWRT_URL -b $OWRT_BRANCH openwrt
+          #git clone $OWRT_URL openwrt
           ln -sf /workdirmo/openwrt $GITHUB_WORKSPACE/openwrt
           [ -e $GITHUB_WORKSPACE/Config/$OWRT_CFG ] && echo "DEVICE_NAME=$(grep '^CONFIG_TARGET_.*_.*_DEVICE_.*=y' $GITHUB_WORKSPACE/Config/$OWRT_CFG | sed -r 's/.*DEVICE_(.*)=y/\1/')" >> $GITHUB_ENV
           
@@ -129,6 +130,7 @@ jobs:
             cd openwrt
             git checkout 26f3634631244eedfbdfd61ea6cc3a2d7f5d896f
             git checkout -b 26f363463
+            #git reset --hard 26f3634631244eedfbdfd61ea6cc3a2d7f5d896f
           fi
 
 
