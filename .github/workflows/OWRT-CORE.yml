@@ -124,7 +124,7 @@ jobs:
           [ -e $GITHUB_WORKSPACE/Config/$OWRT_CFG ] && echo "DEVICE_NAME=$(grep '^CONFIG_TARGET_.*_.*_DEVICE_.*=y' $GITHUB_WORKSPACE/Config/$OWRT_CFG | sed -r 's/.*DEVICE_(.*)=y/\1/')" >> $GITHUB_ENV
           
           #根据源码来修改
-          if [[ $OWRT_URL == *"lede"* ]] ; then
+          if [[ $OWRT_URL == *"coolsnowwolf/lede"* ]] ; then
             # 2023-06-16 临时处理，回滚代码，等无线问题解决
             cd openwrt
             git checkout 26f3634631244eedfbdfd61ea6cc3a2d7f5d896f
@@ -137,7 +137,7 @@ jobs:
         run: |
           #cp -rf $GITHUB_WORKSPACE/ax6/generic.mk openwrt/target/linux/ipq807x/image/generic.mk
           
-          if [[ $OWRT_URL == *"lede"* ]] ; then
+          if [[ $OWRT_URL == *"coolsnowwolf/lede"* ]] ; then
             cp -rf $GITHUB_WORKSPACE/ax6/generic.mk openwrt/target/linux/ipq807x/image/generic.mk
             echo '已修复AX6驱动!'
           else
