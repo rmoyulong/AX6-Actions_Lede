@@ -46,7 +46,7 @@ sed -i 's/luci-theme-design/luci-theme-material/g' feeds/luci/collections/luci/M
 [ ! -e package/lean/default-settings/files/zzz-default-settings ] && echo "DISTRIB_DESCRIPTION='莫小小($(TZ=UTC-8 date +%Y.%m.%d))@lean '" >> package/base-files/files/etc/openwrt_release
 
 # 修改默认wifi名称ssid为moyulong
-sed -i 's/ssid=OpenWrt/ssid=moyulong/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i 's/ssid=OpenWrt/ssid=moxiaoxiao/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 # 修改默认wifi密码key为password
 sed -i 's/encryption=none/encryption=psk2/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
