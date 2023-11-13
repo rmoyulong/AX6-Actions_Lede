@@ -138,16 +138,16 @@ jobs:
       - name: 修复AX6驱动
         run: |
          
-          if [[ $OWRT_URL == *"coolsnowwolf/lede"* ]] ; then
+          #if [[ $OWRT_URL == *"coolsnowwolf/lede"* ]] ; then
             cp -rf $GITHUB_WORKSPACE/ax6/generic.mk openwrt/target/linux/ipq807x/image/generic.mk
             echo 'coolsnowwolf：已修复AX6驱动!'
-          fi 
+          #fi 
           
-          if [[ $OWRT_URL == *"Cathgao/openwrt"* ]] ; then
+          #if [[ $OWRT_URL == *"Cathgao/openwrt"* ]] ; then
             #cp -rf $GITHUB_WORKSPACE/ax6/generic.mk openwrt/target/linux/ipq807x/image/generic.mk
-            cp -rf $GITHUB_WORKSPACE/revert/package/firmware/ipq-wifi/* openwrt/package/firmware/ipq-wifi/
-            echo 'Cathgao：已修复AX6驱动!'
-          fi         
+            #cp -rf $GITHUB_WORKSPACE/revert/package/firmware/ipq-wifi/* openwrt/package/firmware/ipq-wifi/
+            #echo 'Cathgao：已修复AX6驱动!'
+          #fi         
 
       - name: 加载自定义订阅源
         run: |
@@ -165,6 +165,8 @@ jobs:
       - name: 更新订阅源
         run: |
           cd openwrt
+          dos2unix ./scripts/*.sh
+          chmod +x ./scripts/*.sh
 
           ./scripts/feeds update -a
           ./scripts/feeds install -a
