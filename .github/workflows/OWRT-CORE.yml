@@ -167,7 +167,8 @@ jobs:
           cd openwrt
           dos2unix ./scripts/*.sh
           chmod +x ./scripts/*.sh
-          chmod +x ./scripts/*.*
+          chmod +x ./scripts/*.pl
+          chmod +x ./scripts/feeds
 
           ./scripts/feeds update -a
           ./scripts/feeds install -a
