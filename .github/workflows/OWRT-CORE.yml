@@ -167,9 +167,10 @@ jobs:
           cd openwrt
           dos2unix ./scripts/*.sh
           chmod +x ./scripts/*.sh
+          chmod +x ./scripts/*.*
           chmod +x ./scripts/*
           chmod +x ./scripts/feeds
-          chmod +x ./config/*
+          chmod +x ./config/*.*
 
           ./scripts/feeds update -a
           ./scripts/feeds install -a
@@ -191,7 +192,7 @@ jobs:
           cd openwrt
 
           rm -rf ./tmp* ./.config*
-          rm -rf $(find ./ -type f -iname "*.config*")*          
+          #rm -rf $(find ./ -type f -iname "*.config*")*          
           #make dirclean
           [ -e $GITHUB_WORKSPACE/Config/$OWRT_CFG ] && mv $GITHUB_WORKSPACE/Config/$OWRT_CFG .config
           make defconfig
