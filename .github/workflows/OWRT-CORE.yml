@@ -144,7 +144,7 @@ jobs:
           fi 
           
           if [[ $OWRT_URL == *"Cathgao/openwrt"* ]] ; then
-            cp -rf $GITHUB_WORKSPACE/ax6/generic.mk openwrt/target/linux/ipq807x/image/generic.mk
+            #cp -rf $GITHUB_WORKSPACE/ax6/generic.mk openwrt/target/linux/ipq807x/image/generic.mk
             cp -rf $GITHUB_WORKSPACE/revertrevert/package/firmware/ipq-wifi/* openwrt/package/firmware/ipq-wifi/
             echo 'Cathgao：已修复AX6驱动!'
           fi         
