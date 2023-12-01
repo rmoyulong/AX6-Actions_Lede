@@ -105,10 +105,11 @@ jobs:
       run: |
         cd open_wrt
 
-        svn export https://github.com/rmoyulong/AX6-Actions_Lede/trunk/target/linux/qualcommax target/linux/qualcommax
-        mv $GITHUB_WORKSPACE/package/boot/uboot-envtools package/boot/uboot-envtools
-        chmod -Rf 755 target/linux/qualcommax
-        chmod -Rf 755 package/boot/uboot-envtools 
+        svn export https://github.com/immortalwrt/immortalwrt/trunk/target/linux/qualcommax target/linux/qualcommax
+        rm -r package/boot/uboot-envtools
+        svn export https://github.com/immortalwrt/immortalwrt/trunk/package/boot/uboot-envtools package/boot/uboot-envtools
+        #chmod -Rf 755 target/linux/qualcommax
+        #chmod -Rf 755 package/boot/uboot-envtools 
 
         
     #- name: 修复AX6驱动
