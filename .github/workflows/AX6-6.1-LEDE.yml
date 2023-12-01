@@ -105,6 +105,8 @@ jobs:
       run: |
         cd open_wrt
         
+        rm -r target/linux/qualcommax/*
+        rm -r package/boot/uboot-envtools/*
         svn export https://github.com/rmoyulong/AX6-Actions_Lede/trunk/target/linux/qualcommax target/linux/qualcommax
         svn export https://github.com/rmoyulong/AX6-Actions_Lede/trunk/package/boot/uboot-envtools package/boot/uboot-envtools
 
