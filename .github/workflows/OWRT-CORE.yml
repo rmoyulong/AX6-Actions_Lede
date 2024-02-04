@@ -192,9 +192,9 @@ jobs:
           [ -e files ] && mv files openwrt/files
           cd openwrt
           
-          if [[ $OWRT_CFG == *"redmi_ax6.config"* ]] ; then
-            rm -rf feeds/routing/batman-adv
-          fi
+          #if [[ $OWRT_CFG == *"redmi_ax6.config"* ]] ; then
+            #rm -rf feeds/routing/batman-adv
+          #fi
           
           rm -rf ./tmp* ./.config*
           #rm -rf $(find ./ -type f -iname "*.config*")*          
