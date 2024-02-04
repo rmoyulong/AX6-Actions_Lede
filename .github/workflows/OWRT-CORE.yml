@@ -106,6 +106,7 @@ jobs:
           echo "OWRT_PW=$OWRT_PW" >> $GITHUB_ENV
           echo "OWRT_IP=$OWRT_IP" >> $GITHUB_ENV
           echo "OWRT_LINUX=$OWRT_LINUX" >> $GITHUB_ENV
+          echo "OWRT_CFG=$OWRT_CFG" >> $GITHUB_ENV
 
       - name: 检查脚本
         run: |
@@ -190,7 +191,11 @@ jobs:
         run: |
           [ -e files ] && mv files openwrt/files
           cd openwrt
-
+          
+          if [[ $OWRT_CFG == *"redmi_ax6.config"* ]] ; then
+            rm -rf feeds/routing/batman-adv
+          fi
+          
           rm -rf ./tmp* ./.config*
           #rm -rf $(find ./ -type f -iname "*.config*")*          
           #make dirclean
