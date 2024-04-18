@@ -169,10 +169,14 @@ jobs:
       - name: 加载自定义订阅源
         run: |
           cd openwrt
-          # 科学上网插件
-          $GITHUB_WORKSPACE/Scripts/quick.sh
-          #git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
-          #echo 'src-git kenzok8 https://github.com/kenzok8/openwrt-packages' >> feeds.conf.default
+          
+          if [[ "${{ inputs.OWRT_CFG }}" == *"redmi_ax6-5.15.config"* ]]; then
+            echo 'src-git smallpackeges https://github.com/Glunefish/small-package.git' >> feeds.conf.default
+          else
+            echo 'src-git small https://github.com/kenzok8/small' >> feeds.conf.default
+            echo 'src-git kenzok8 https://github.com/kenzok8/openwrt-packages' >> feeds.conf.default
+          fi
+          
           echo "COMMIT_HASH=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
       - name: 启动缓存[第二次起生效]
