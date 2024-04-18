@@ -114,7 +114,7 @@ jobs:
           export OWRT_DATE=$(TZ=UTC-8 date +"%y.%m.%d_%H.%M.%S")
           export OWRT_SOURCE=$(echo $OWRT_URL | cut -d '/' -f 5-)
           #export OWRT_TYPE="cortex-a53"
-
+          
           echo "OWRT_SOURCE=$OWRT_SOURCE" >> $GITHUB_ENV
           echo "OWRT_TARGET=$OWRT_TARGET" >> $GITHUB_ENV
           echo "OWRT_DATE=$OWRT_DATE" >> $GITHUB_ENV
@@ -170,8 +170,9 @@ jobs:
         run: |
           cd openwrt
           # 科学上网插件
-          git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
-          echo 'src-git kenzok8 https://github.com/kenzok8/openwrt-packages' >> feeds.conf.default
+          $GITHUB_WORKSPACE/Scripts/quick.sh
+          #git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
+          #echo 'src-git kenzok8 https://github.com/kenzok8/openwrt-packages' >> feeds.conf.default
           echo "COMMIT_HASH=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
       - name: 启动缓存[第二次起生效]
@@ -190,19 +191,18 @@ jobs:
           chmod +x ./scripts/*
           chmod +x ./scripts/feeds
           chmod +x ./config/*.*
-
+          
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 
       - name: 自定义脚本
         run: |
           cd openwrt
-
+          
           cp -rf $GITHUB_WORKSPACE/ax6/banner package/base-files/files/etc/banner
           $GITHUB_WORKSPACE/Scripts/Settings.sh
-
+          
           cd ./package
-
           $GITHUB_WORKSPACE/Scripts/Plugins.sh
 
       - name: 自定义设置
@@ -240,13 +240,12 @@ jobs:
       - name: 整理固件
         run: |
           cd openwrt && mkdir ./upload
-
+          
           rm -rf $(find ./bin/targets/ -iregex ".*\(json\|manifest\|buildinfo\|sha256sums\|packages\)$")
           cp -rf $(find ./bin/targets/ -type f -iname "*.*") ./upload/
           cp -rf ./.config ./upload/Config_"$OWRT_TARGET"_"$OWRT_SOURCE"_"$OWRT_DATE".txt
-
+          
           cd ./upload
-
           $GITHUB_WORKSPACE/Scripts/Renames.sh
 
       - name: 生成固件标签
