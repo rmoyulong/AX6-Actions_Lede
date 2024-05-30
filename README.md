@@ -14,6 +14,8 @@ qca --- lede <br>
 
 shadowsocks-libev --- lede <br>
 libs --- lede <br>
+
+aria2 --- lede <br>
 ============================================<br>
 ztdns --- immortalwrt <br>
 libnatpmp --- immortalwrt <br>
