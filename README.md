@@ -11,9 +11,14 @@
 插件： <br>
 pcre --- lede <br>
 qca --- lede <br>
+
+shadowsocks-libev --- lede <br>
+libs --- lede <br>
 ============================================<br>
 ztdns --- immortalwrt <br>
 libnatpmp --- immortalwrt <br>
 zerotier --- immortalwrt <br>
 luci-app-zerotier --- immortalwrt <br>
+
+所有主题 --- immortalwrt <br>
 ============================================<br>
