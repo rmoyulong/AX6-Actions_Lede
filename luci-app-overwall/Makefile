@@ -49,15 +49,15 @@ config PACKAGE_$(PKG_NAME)_INCLUDE_Shadowsocks_Libev_Client
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_ShadowsocksR_Libev_Client
 	bool "Include ShadowsocksR Libev Client"
-	default n
+	default y
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Shadowsocks_Libev_Server
 	bool "Include Shadowsocks Libev Server"
-	default y
+	default n
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_ShadowsocksR_Libev_Server
 	bool "Include ShadowsocksR Libev Server"
-	default n
+	default y
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Simple_obfs
 	bool "Include Shadowsocks Simple-obfs Plugin"
@@ -66,11 +66,11 @@ config PACKAGE_$(PKG_NAME)_INCLUDE_Simple_obfs
 config PACKAGE_$(PKG_NAME)_INCLUDE_Simple_obfs_server
 	bool "Include Shadowsocks Simple-obfs-server Plugin"
 	depends on PACKAGE_$(PKG_NAME)_INCLUDE_Shadowsocks_Libev_Server
-	default y
+	default n
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Xray_plugin
 	bool "Include Shadowsocks Xray Plugin"
-	default y
+	default n
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Xray
 	bool "Include Xray"
@@ -78,7 +78,7 @@ config PACKAGE_$(PKG_NAME)_INCLUDE_Xray
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Trojan
 	bool "Include Trojan"
-	default n
+	default y
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Trojan-Go
 	bool "Include Trojan Go"
@@ -91,7 +91,7 @@ config PACKAGE_$(PKG_NAME)_INCLUDE_NaiveProxy
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Kcptun
 	bool "Include Kcptun"
-	default n
+	default y
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Socks5_Proxy
 	bool "Include Socks5 Transparent Proxy"
