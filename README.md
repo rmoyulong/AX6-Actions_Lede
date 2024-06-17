@@ -22,5 +22,4 @@ libnatpmp --- immortalwrt <br>
 zerotier --- immortalwrt <br>
 luci-app-zerotier --- immortalwrt <br>
 
-所有主题 --- immortalwrt <br>
 ============================================<br>
