@@ -4,6 +4,7 @@
 trap 'rm -rf "$TMPDIR"' EXIT
 TMPDIR=$(mktemp -d) || exit 1
 
+rm -rf ./package/qca
 if [ ! -z "./package/turboacc" ];then
     mkdir -p ./package/turboacc
 fi
