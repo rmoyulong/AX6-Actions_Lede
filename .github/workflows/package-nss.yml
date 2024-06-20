@@ -141,7 +141,7 @@ jobs:
         cp -rf ../lede/package/libs/pcre package/libs/pcre
         ##########################################################################################
         #nss
-        git clone -b main_nss_wifi https://github.com/AgustinLorenzo/nss-packages package/qca
+        git clone -b main_nss_wifi https://github.com/AgustinLorenzo/nss-packages package/nss-packages
         
         #需要删除 feeds/packages/net/shadowsocks-libev
         merge_package master https://github.com/immortalwrt/packages package net/shadowsocks-libev
