@@ -195,7 +195,7 @@ jobs:
         git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-kodexplorer
         ###########################################################################################
         #适合lede库的mod_nftables_full 
-        rm -rm package/network/utils
+        rm -rf package/network/utils
         mkdir -p package/network/utils
         cp -rf ../immortalwrt/package/network/utils/fullconenat-nft package/network/utils/fullconenat-nft
         cp -rf ../immortalwrt/package/network/utils/fullconenat package/network/utils/fullconenat
@@ -227,7 +227,7 @@ jobs:
         rm -rf package/luci-theme-openwrt-2020
         ###########################################################################################
         #适合openwrt库的mod_nftables_full 
-        rm -rm package/network/utils
+        rm -rf package/network/utils
         mkdir -p package/network/utils
         cp -rf ../breeze303/package/network/utils/fullconenat-nft package/network/utils/fullconenat-nft
         cp -rf ../breeze303/package/network/utils/fullconenat package/network/utils/fullconenat
