@@ -184,7 +184,7 @@ jobs:
         
         ##########################################################################################
         #immortalwrt 打包需要的插件
-        tar zcvfp $GITHUB_WORKSPACE/outfile/immortalwrt-nss.tar.gz .
+        tar zcvfp $GITHUB_WORKSPACE/outfile/immortalwrt.tar.gz .
         ##########################################################################################
         
         #需要删除 feeds/packages/net/mosdns
@@ -209,7 +209,7 @@ jobs:
         
         ##########################################################################################
         #lede 打包需要的插件
-        tar zcvfp $GITHUB_WORKSPACE/outfile/lede-nss.tar.gz .
+        tar zcvfp $GITHUB_WORKSPACE/outfile/lede.tar.gz .
         ##########################################################################################
         
         #openwrt需要的依赖
@@ -237,7 +237,7 @@ jobs:
         
         ##########################################################################################
         #openwrt 打包需要的插件
-        tar zcvfp $GITHUB_WORKSPACE/outfile/openwrt-nss.tar.gz .
+        tar zcvfp $GITHUB_WORKSPACE/outfile/openwrt.tar.gz .
         ##########################################################################################
         
  
