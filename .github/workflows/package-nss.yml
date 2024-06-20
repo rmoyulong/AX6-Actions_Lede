@@ -106,6 +106,7 @@ jobs:
       run: |
         git clone -q --single-branch --depth=1 --branch=master https://github.com/immortalwrt/immortalwrt immortalwrt
         git clone -q --single-branch --depth=1 --branch=master https://github.com/coolsnowwolf/lede lede
+        git clone -q --single-branch --depth=1 --branch=main https://github.com/darkrain88/openwrt-6.x breeze303
         
         #建立上传目录
         mkdir -p outfile
@@ -228,9 +229,9 @@ jobs:
         #适合openwrt库的mod_nftables_full 
         rm -rm package/network/utils
         mkdir -p package/network/utils
-        cp -rf ../immortalwrt/package/network/utils/fullconenat-nft package/network/utils/fullconenat-nft
-        cp -rf ../immortalwrt/package/network/utils/fullconenat package/network/utils/fullconenat
-        cp -rf ../immortalwrt/package/network/utils/nftables package/network/utils/nftables
+        cp -rf ../breeze303/package/network/utils/fullconenat-nft package/network/utils/fullconenat-nft
+        cp -rf ../breeze303/package/network/utils/fullconenat package/network/utils/fullconenat
+        cp -rf ../breeze303/package/network/utils/nftables package/network/utils/nftables
         ###########################################################################################
         git_sparse_clone master https://github.com/kiddin9/openwrt-packages cpufreq
         git_sparse_clone master https://github.com/kiddin9/openwrt-packages vlmcsd
