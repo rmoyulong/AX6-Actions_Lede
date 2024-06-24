@@ -8,10 +8,10 @@ echo "# Put your custom commands here that should be executed once
 
 #mount -o remount rw /
 #/usr/sbin/balethirq.pl
-bash /etc/diymo.sh
-bash /etc/aria2.sh
-
+#alias reboot='reboot -f'
+sh /etc/diymo.sh
+sh /etc/aria2.sh
 exit 0">/etc/rc.local
 
 rm -rf /etc/1.sh
-bash /etc/rc.local
+sh /etc/rc.local
