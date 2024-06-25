@@ -261,6 +261,9 @@ jobs:
         cp -rf ../openwrt/package/libs/ustream-ssl package/libs/ustream-ssl
         cp -rf ../openwrt/package/libs/uclient package/libs/uclient
         cp -rf ../lede/package/libs/pcre package/libs/pcre
+
+        mkdir -p package/kernel
+        cp -rf ../openwrt/package/kernel/cryptodev-linux package/kernel/cryptodev-linux
         
         rm -rf package/network
         mkdir -p package/network/services
