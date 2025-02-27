@@ -155,7 +155,6 @@ jobs:
         git_sparse_clone main https://github.com/kiddin9/kwrt-packages v2dat
         git_sparse_clone main https://github.com/kiddin9/kwrt-packages shadow-tls
         
-        merge_package master https://github.com/immortalwrt/packages package net/vlmcsd
         merge_package master https://github.com/immortalwrt/packages package lang/lua-neturl
         
         git_sparse_clone main https://github.com/kiddin9/kwrt-packages redsocks2
@@ -251,7 +250,8 @@ jobs:
         #cp -rf ../lede/package/network/utils/nftables package/network/utils/nftables
         ###########################################################################################
         git_sparse_clone main https://github.com/kiddin9/kwrt-packages cpufreq
-        git_sparse_clone main https://github.com/kiddin9/kwrt-packages luci-app-vlmcsd   
+        git_sparse_clone main https://github.com/kiddin9/kwrt-packages luci-app-vlmcsd
+        merge_package master https://github.com/immortalwrt/packages package net/vlmcsd
         git_sparse_clone main https://github.com/kenzok8/small-package vsftpd
         git_sparse_clone main https://github.com/kiddin9/kwrt-packages luci-app-vsftpd
         git_sparse_clone main https://github.com/kiddin9/kwrt-packages luci-app-usb-printer
