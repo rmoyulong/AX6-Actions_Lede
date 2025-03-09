@@ -96,12 +96,7 @@ jobs:
           #sudo rm /etc/apt/sources.list.d/microsoft-prod.list
           sudo -E apt-get -qq update --fix-missing
           sudo -E apt-get -qq full-upgrade
-          sudo -E apt-get -qq install ack antlr3 aria2 asciidoc autoconf automake autopoint binutils bison build-essential \
-          bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib \
-          git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev \
-          libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool lrzsz \
-          mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pip libpython3-dev qemu-utils \
-          rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev dos2unix
+          sudo -E apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3 python2.7 unzip zlib1g-dev lib32gcc-s1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler g++-multilib antlr3 gperf wget curl swig rsync ccache ecj fastjar file g++ java-propose-classpath libncursesw5-dev python2 python2.7-dev python3-distutils-extra python3-setuptools python3-dev time xsltproc dos2unix
           sudo -E apt-get -qq install time gn
           sudo -E apt-get -qq autoremove --purge
           sudo -E apt-get -qq clean
@@ -142,43 +137,15 @@ jobs:
           #git clone $OWRT_URL openwrt
           ln -sf /workdirmo/openwrt $GITHUB_WORKSPACE/openwrt
           [ -e $GITHUB_WORKSPACE/Config/$OWRT_CFG ] && echo "DEVICE_NAME=$(grep '^CONFIG_TARGET_.*_.*_DEVICE_.*=y' $GITHUB_WORKSPACE/Config/$OWRT_CFG | sed -r 's/.*DEVICE_(.*)=y/\1/')" >> $GITHUB_ENV
-          
-          #根据源码来修改
-          if [[ $OWRT_URL == *"coolsnowwolf/lede"* ]] ; then
-            # 2023-06-16 临时处理，回滚代码，等无线问题解决
-            cd openwrt
-            git checkout 26f3634631244eedfbdfd61ea6cc3a2d7f5d896f
-            git checkout -b 26f363463
-            #git reset --hard 26f3634631244eedfbdfd61ea6cc3a2d7f5d896f
-          fi
 
-
-      #添加红米ax6 编译选项
-      - name: 修复AX6驱动
-        run: |
-         
-          #if [[ $OWRT_URL == *"coolsnowwolf/lede"* ]] ; then
-            cp -rf $GITHUB_WORKSPACE/ax6/generic.mk openwrt/target/linux/ipq807x/image/generic.mk
-            echo 'coolsnowwolf：已修复AX6驱动!'
-          #fi 
-          
-          #if [[ $OWRT_URL == *"Cathgao/openwrt"* ]] ; then
-            #cp -rf $GITHUB_WORKSPACE/ax6/generic.mk openwrt/target/linux/ipq807x/image/generic.mk
-            #cp -rf $GITHUB_WORKSPACE/revert/package/firmware/ipq-wifi/* openwrt/package/firmware/ipq-wifi/
-            #echo 'Cathgao：已修复AX6驱动!'
-          #fi         
 
       - name: 加载自定义订阅源
         run: |
           cd openwrt
           
-          if [[ "${{ inputs.OWRT_CFG }}" == *"redmi_ax6-5.15.config"* ]]; then
-            echo 'src-git kiddin9 https://github.com/kiddin9/openwrt-packages' >> feeds.conf.default
-          else
-            #如果需要 easymesh 就要加上openwrt-21.02
-            #echo 'src-git routing https://git.openwrt.org/feed/routing.git;openwrt-21.02' >> feeds.conf.default
-            echo 'src-git kiddin9 https://github.com/kiddin9/openwrt-packages' >> feeds.conf.default
-          fi
+          # Add a feed source
+          echo 'src-git helloworld https://github.com/fw876/helloworld' >> feeds.conf.default
+          echo 'src-git kenzo https://github.com/kenzok8/openwrt-packages' >> feeds.conf.default
           
           echo "COMMIT_HASH=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
