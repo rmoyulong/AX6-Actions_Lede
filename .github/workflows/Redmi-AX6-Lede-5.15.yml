@@ -1,5 +1,5 @@
 #CI项目名
-name: Redmi-AX6-Lede-515
+name: Redmi-AX6-Lede-510
 
 on:
   #自动编译：每天早上4点
@@ -32,8 +32,8 @@ jobs:
       #源码版本
       OWRT_BRANCH: master
       #自定义config
-      OWRT_CFG: redmi_ax6.config
+      OWRT_CFG: redmi_ax6-5.15.config
       #设备类型
       OWRT_TYPE: 红米AX6
-      OWRT_LINUX: 6.x
+      OWRT_LINUX: 5.15.x
       
