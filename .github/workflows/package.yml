@@ -260,6 +260,12 @@ jobs:
         #需要删除 feeds/luci/applications/luci-app-zerotier
         git_sparse_clone main https://github.com/kiddin9/kwrt-packages luci-app-zerotier
         ##########################################################################################
+        # Easytier
+        git clone --depth 1 -b main https://github.com/EasyTier/luci-app-easytier.git luci-app-easytier
+        mv luci-app-easytier/easytier package/easytier
+        mv luci-app-easytier/luci-app-easytier package/luci-app-easytier
+        rm -rf luci-app-easytier
+        ##########################################################################################        
         #openwrt 打包需要的插件
         rm -rf package/libs/mbedtls
         cp -rf ../immortalwrt/package/libs/mbedtls package/libs/mbedtls
