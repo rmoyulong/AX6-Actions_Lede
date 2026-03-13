@@ -180,7 +180,7 @@ jobs:
       - name: 自定义设置
         run: |
           [ -e files ] && mv files openwrt/files
-          
+          cd openwrt
           $GITHUB_WORKSPACE/patch/python.patch.sh
           
           #if [[ $OWRT_CFG == *"redmi_ax6.config"* ]] ; then
