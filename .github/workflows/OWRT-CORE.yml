@@ -166,9 +166,9 @@ jobs:
         run: |
           cd openwrt
           
-          if [[ "${{inputs.OWRT_CFG}}" == *"redmi_ax6-TESTING"* ]]; then
-            cp -rf $GITHUB_WORKSPACE/patch/Makefile target/linux/qualcommax/Makefile
-          fi
+          #if [[ "${{inputs.OWRT_CFG}}" == *"redmi_ax6-TESTING"* ]]; then
+            #cp -rf $GITHUB_WORKSPACE/patch/Makefile target/linux/qualcommax/Makefile
+          #fi
           
           $GITHUB_WORKSPACE/Scripts/new_remove.sh
           cp -rf $GITHUB_WORKSPACE/ax6/banner package/base-files/files/etc/banner
