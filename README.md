@@ -1,4 +1,5 @@
 # AX6-Actions_Lede
+[![build](https://img.shields.io/github/actions/workflow/status/rmoyulong/AX6-Actions_Lede/Redmi-AX6-Lede.yml)](https://github.com/rmoyulong/AX6-Actions_Lede/actions/workflows/Redmi-AX6-Lede.yml) [![downloads](https://img.shields.io/github/downloads/rmoyulong/AX6-Actions_Lede/total)](https://github.com/rmoyulong/AX6-Actions_Lede/releases) [![downloads@latest](https://img.shields.io/github/downloads/rmoyulong/AX6-Actions_Lede/latest/total)](https://github.com/rmoyulong/AX6-Actions_Lede/releases/latest)<br>
 自用精简AX6固件，感谢各位github上的大侠！水平有限，刷机变砖本人概不负责！谢谢！！
 
 感谢所有github上无私奉献的大佬们无私的奉献！！！<br>
