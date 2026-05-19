@@ -28,7 +28,8 @@ sed -i 's/time1.cloud.tencent.com/ntp.aliyun.com/' package/base-files/files/bin/
 sed -i 's/time.ustc.edu.cn/cn.ntp.org.cn/' package/base-files/files/bin/config_generate
 sed -i 's/cn.pool.ntp.org/pool.ntp.org/' package/base-files/files/bin/config_generate
 
-rm -rf feeds/packages/net/sing-box
+#最新golang
+rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
 
 #5.更换lede源码中自带argon主题
