@@ -138,16 +138,16 @@ jobs:
           [ -e $GITHUB_WORKSPACE/Config/$OWRT_CFG ] && echo "DEVICE_NAME=$(grep '^CONFIG_TARGET_.*_.*_DEVICE_.*=y' $GITHUB_WORKSPACE/Config/$OWRT_CFG | sed -r 's/.*DEVICE_(.*)=y/\1/')" >> $GITHUB_ENV
 
 
-      - name: 加载自定义订阅源
-        run: |
-          cd openwrt
+      #- name: 加载自定义订阅源
+        #run: |
+          #cd openwrt
           
           # Add a feed source
           #echo 'src-git helloworld https://github.com/fw876/helloworld' >> feeds.conf.default
           #echo 'src-git kenzo https://github.com/kenzok8/openwrt-packages' >> feeds.conf.default
-          $GITHUB_WORKSPACE/Scripts/quick.sh
+          #$GITHUB_WORKSPACE/Scripts/quick.sh
           
-          echo "COMMIT_HASH=$(git rev-parse HEAD)" >> $GITHUB_ENV
+          #echo "COMMIT_HASH=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
       - name: 启动缓存[第二次起生效]
         uses: rmoyulong/cachewrtbuild@main
@@ -162,7 +162,7 @@ jobs:
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 
-      - name: 自定义脚本
+      - name: 自定义脚本和更新到最新插件
         run: |
           cd openwrt
           
@@ -170,7 +170,9 @@ jobs:
             #cp -rf $GITHUB_WORKSPACE/patch/Makefile target/linux/qualcommax/Makefile
           #fi
           
-          #$GITHUB_WORKSPACE/Scripts/new_remove.sh
+          $GITHUB_WORKSPACE/Scripts/quick.sh
+          echo "COMMIT_HASH=$(git rev-parse HEAD)" >> $GITHUB_ENV
+          
           cp -rf $GITHUB_WORKSPACE/ax6/banner package/base-files/files/etc/banner
           $GITHUB_WORKSPACE/Scripts/Settings.sh
           
