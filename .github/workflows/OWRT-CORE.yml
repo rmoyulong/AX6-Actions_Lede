@@ -158,9 +158,10 @@ jobs:
 
       - name: 更新订阅源
         run: |
-          cd openwrt          
-          ./scripts/feeds update -a
-          ./scripts/feeds install -a
+          cd openwrt
+          
+          $GITHUB_WORKSPACE/Scripts/setup.sh
+          echo "COMMIT_HASH=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
       - name: 自定义脚本和更新到最新插件
         run: |
@@ -169,9 +170,6 @@ jobs:
           #if [[ "${{inputs.OWRT_CFG}}" == *"redmi_ax6-TESTING"* ]]; then
             #cp -rf $GITHUB_WORKSPACE/patch/Makefile target/linux/qualcommax/Makefile
           #fi
-          
-          $GITHUB_WORKSPACE/Scripts/quick.sh
-          echo "COMMIT_HASH=$(git rev-parse HEAD)" >> $GITHUB_ENV
           
           cp -rf $GITHUB_WORKSPACE/ax6/banner package/base-files/files/etc/banner
           $GITHUB_WORKSPACE/Scripts/Settings.sh
