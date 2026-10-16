@@ -225,8 +225,8 @@ jobs:
           tag_name: ${{env.OWRT_TARGET}}_${{env.OWRT_SOURCE}}_${{env.OWRT_DATE}}
           files: openwrt/upload/*.*
           body: |
-            自用AX6固件！刷机有风险！
-            有一定几率变砖，刷前需谨慎！
+            自用AX6固件！历经无数刷机！
+            大胆刷就行！
 
             源码：${{env.OWRT_SOURCE}}
             平台：${{env.OWRT_TARGET}}
