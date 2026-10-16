@@ -44,17 +44,27 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/M
 sed -i 's/luci-theme-argon/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 sed -i 's/luci-theme-design/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 
+######################################################################################################
+
 #固件版本号添加个人标识和日期
-[ -e package/lean/default-settings/files/zzz-default-settings ] && sed -i "s/DISTRIB_DESCRIPTION='.*OpenWrt '/DISTRIB_DESCRIPTION='莫小小($(TZ=UTC-8 date +%Y.%m.%d))@OpenWrt '/g" package/lean/default-settings/files/zzz-default-settings
-#[ ! -e package/lean/default-settings/files/zzz-default-settings ] && sed -i "/DISTRIB_DESCRIPTION='*'/d" package/base-files/files/etc/openwrt_release
-[ ! -e package/lean/default-settings/files/zzz-default-settings ] && echo "DISTRIB_DESCRIPTION='莫小小($(TZ=UTC-8 date +%Y.%m.%d))@lean '" >> package/base-files/files/etc/openwrt_release
+FILE="package/lean/default-settings/files/zzz-default-settings"
+dist_info="Openwrt LEDE 莫小小($(TZ=UTC-8 date +%Y.%m.%d))"
 
-# 修改默认wifi名称ssid为moyulong
-sed -i 's/ssid=OpenWrt/ssid=moyulong/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+#如果FILE文件不存在，则不是lede系统
+if [ ! -d $FILE ]; then
+  FILE="package/base-files/files/etc/openwrt_release"
+  dist_info="Openwrt SNAPSHOT 莫小小($(TZ=UTC-8 date +%Y.%m.%d))"
+fi
 
-# 修改默认wifi密码key为password
-sed -i 's/encryption=none/encryption=psk2/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
-sed -i '/set wireless.default_radio${devidx}.encryption=psk2/a\set wireless.default_radio${devidx}.key=password' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+# 删除所有 DISTRIB_DESCRIPTION 行，并追加新的赋值
+sed -i "/^DISTRIB_DESCRIPTION=/d" "$FILE"
+echo "DISTRIB_DESCRIPTION='$dist_info'" >> "$FILE"
+
+#添加编译日期标识
+cur_time=$(TZ=UTC-8 date +%y.%m.%d_%H.%M.%S)
+sed -i "s/(\(luciversion || ''\))/(\1) + (' \/ $cur_time')/g" $(find ./feeds/luci/modules/luci-mod-status/ -type f -name "10_system.js")
+#修改默认WIFI名
+sed -i "s/\.ssid=.*/\.ssid=Openwrt_WiFi/g" $(find ./package/kernel/mac80211/ ./package/network/config/ -type f -name "mac80211.*")
 
 # 设置密码为password
 sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/' package/base-files/files/etc/shadow
